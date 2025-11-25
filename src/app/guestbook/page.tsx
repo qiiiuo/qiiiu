@@ -1,13 +1,15 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { motion } from 'framer-motion'
+import { User } from '@supabase/supabase-js'
 import AnimatedSection from '@/components/AnimatedSection'
 import { supabase, type Message } from '@/lib/supabase'
 import { formatDate } from '@/lib/utils'
 
 export default function GuestbookPage() {
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<User | null>(null)
   const [messages, setMessages] = useState<Message[]>([])
   const [newMessage, setNewMessage] = useState('')
   const [loading, setLoading] = useState(true)
@@ -125,10 +127,12 @@ export default function GuestbookPage() {
               <div className="flex items-center justify-between mb-4">
                 <div className="flex items-center gap-3">
                   {user.user_metadata?.avatar_url && (
-                    <img
+                    <Image
                       src={user.user_metadata.avatar_url}
                       alt="Avatar"
-                      className="w-10 h-10 rounded-full"
+                      width={40}
+                      height={40}
+                      className="rounded-full object-cover"
                     />
                   )}
                   <span className="font-medium">
@@ -188,10 +192,12 @@ export default function GuestbookPage() {
                 <div className="flex items-start justify-between">
                   <div className="flex items-start gap-3 flex-1">
                     {message.avatar ? (
-                      <img
+                      <Image
                         src={message.avatar}
                         alt={message.username}
-                        className="w-10 h-10 rounded-full"
+                        width={40}
+                        height={40}
+                        className="rounded-full object-cover"
                       />
                     ) : (
                       <div className="w-10 h-10 rounded-full bg-gray-200 flex items-center justify-center">

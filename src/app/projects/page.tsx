@@ -1,7 +1,6 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import Link from 'next/link'
 import AnimatedSection from '@/components/AnimatedSection'
 import { projects } from '@/content/projects'
 

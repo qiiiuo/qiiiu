@@ -56,11 +56,7 @@ The modern web development ecosystem offers powerful tools for building fast, sc
   `.trim(),
 }
 
-export default function BlogPostPage({
-  params,
-}: {
-  params: { slug: string }
-}) {
+export default function BlogPostPage() {
 
   return (
     <div className="mx-auto max-w-3xl px-6 py-20">

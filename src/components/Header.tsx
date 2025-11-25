@@ -5,6 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { motion } from 'framer-motion'
+import { User } from '@supabase/supabase-js'
 import { supabase } from '@/lib/supabase'
 
 // Create a context for the login modal
@@ -23,7 +24,7 @@ export const useLoginModal = () => useContext(LoginModalContext)
 export default function Header() {
   const pathname = usePathname()
   const { openLoginModal } = useLoginModal()
-  const [user, setUser] = useState<any>(null)
+  const [user, setUser] = useState<User | null>(null)
 
   useEffect(() => {
     checkUser()
@@ -104,10 +105,12 @@ export default function Header() {
           {user ? (
             <div className="flex items-center gap-3">
               {user.user_metadata?.avatar_url && (
-                <img
+                <Image
                   src={user.user_metadata.avatar_url}
                   alt="Avatar"
-                  className="w-8 h-8 rounded-full border border-gray-200"
+                  width={32}
+                  height={32}
+                  className="rounded-full object-cover border border-gray-200"
                 />
               )}
               <button

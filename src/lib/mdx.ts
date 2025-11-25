@@ -1,7 +1,7 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
-import { formatDate, calculateReadingTime } from './utils'
+import { calculateReadingTime } from './utils'
 
 const blogsDirectory = path.join(process.cwd(), 'src/content/blogs')
 
