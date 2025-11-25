@@ -1,0 +1,17 @@
+name = "qiiiu-page"
+compatibility_date = "2024-01-01"
+
+[build]
+command = "npm run build"
+
+[build.upload]
+format = "service-worker"
+
+[[build.upload.rules]]
+type = "CompiledWasm"
+globs = ["**/*.wasm"]
+
+[[build.upload.rules]]
+type = "Text"
+globs = ["**/*.txt", "**/*.html", "**/*.css", "**/*.js"]
+
